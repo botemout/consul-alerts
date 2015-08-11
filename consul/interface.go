@@ -47,7 +47,6 @@ type NotifiersConfig struct {
 	Slack     *SlackNotifierConfig
 	PagerDuty *PagerDutyNotifierConfig
 	HipChat   *HipChatNotifierConfig
-	OpsGenie  *OpsGenieNotifierConfig
 	Custom    []string
 }
 
@@ -104,12 +103,6 @@ type HipChatNotifierConfig struct {
 	BaseURL     string
 }
 
-type OpsGenieNotifierConfig struct {
-	Enabled     bool
-	ClusterName string
-	ApiKey   string
-}
-
 type Status struct {
 	Current          string
 	CurrentTimestamp time.Time
@@ -132,7 +125,6 @@ type Consul interface {
 	SlackConfig() *SlackNotifierConfig
 	PagerDutyConfig() *PagerDutyNotifierConfig
 	HipChatConfig() *HipChatNotifierConfig
-	OpsGenieConfig() *OpsGenieNotifierConfig
 
 	CheckChangeThreshold() int
 	UpdateCheckData()
@@ -189,11 +181,6 @@ func DefaultAlertConfig() *ConsulAlertConfig {
 		ClusterName: "Consul-Alerts",
 	}
 
-	opsgenie := &OpsGenieNotifierConfig{
-		Enabled:     false,
-		ClusterName: "Consul-Alerts",
-	}
-
 	notifiers := &NotifiersConfig{
 		Email:     email,
 		Log:       log,
@@ -201,7 +188,6 @@ func DefaultAlertConfig() *ConsulAlertConfig {
 		Slack:     slack,
 		PagerDuty: pagerduty,
 		HipChat:   hipchat,
-		OpsGenie:  opsgenie,
 		Custom:    []string{},
 	}
 
