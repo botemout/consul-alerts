@@ -8,8 +8,8 @@ import (
 
 	"encoding/json"
 
-	log "github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/Sirupsen/logrus"
-	consulapi "github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/hashicorp/consul/api"
+	log "github.com/botemout/consul-alerts/Godeps/_workspace/src/github.com/Sirupsen/logrus"
+	consulapi "github.com/botemout/consul-alerts/Godeps/_workspace/src/github.com/hashicorp/consul/api"
 )
 
 const (
